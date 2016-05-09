@@ -1,5 +1,7 @@
 package io.branch;
 
+import android.content.Intent;
+
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.PluginResult;
@@ -11,6 +13,11 @@ import io.branch.referral.Branch;
 import io.branch.referral.BranchError;
 
 public class BranchSDK extends CordovaPlugin {
+
+    @Override
+    public void onNewIntent(Intent intent) {
+        this.cordova.getActivity().setIntent(intent);
+    }
 
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
